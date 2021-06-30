@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <h1 class= "row" class="col-12">ITBootcamp Chat</h1>
+        <h3 class= "row" class="col-12"> Choose a chatroom</h3>
+    </header>
+    <nav class= "row">
+
+        <button id="general" class="col-3" class="active">#general</button>
+        <button id="js"class="col-3">#js</button>
+        <button id="homeworks"class="col-3" >#homeworks</button>
+        <button id="tests"class="col-3">#tests</button>
+    </nav>
+    <section class="row">
+
+       <ul class="col-12">
+
+       </ul>
+    </section>
+    <div id="divForma">
+        <p class="row">
+            <span class="col-4"> &nbsp;</span>
+            <input type="color" value="#ffffff" class="col-3" id="pickColor">
+            <button id="updateColor" class="col-2">Update color</button>
+            <span class="col-3"> &nbsp;</span>
+        </p>
+        <p class="row">
+            <span class="col-4"> &nbsp;</span>
+            <textarea name="inputMessage" id="inputMessage" cols="30" rows="10" class="col-3" placeholder="Your message"></textarea>
+            <input type="submit" value="Send" id="btn1" class="col-2"></button>
+            <span class="col-3"> &nbsp;</span>
+        </p>
+    
+        <p class="row">
+            <span class="col-4">&nbsp;</span>
+            <input type="text" placeholder="Update username" id="inputUsername" class="col-3">
+            <input type="submit" value="Update"id="btn2" class="col-2"></button>
+            <span class="col-3"> &nbsp;</span>
+        </p>
+        
+    </div>
+    <footer></footer>
+
+
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBBaKMHyjZ3_1LSGlV8WsDUDlKTpUJwpms",
+    authDomain: "itbootcamp-b879e.firebaseapp.com",
+    projectId: "itbootcamp-b879e",
+    storageBucket: "itbootcamp-b879e.appspot.com",
+    messagingSenderId: "1025337696140",
+    appId: "1:1025337696140:web:568ab0225bcba0118980a9"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  let db = firebase.firestore();
+</script>
+<!-- <script src="script.js"></script> -->
+<script type="module" src="app.js"></script>
+</body>
+</html>
