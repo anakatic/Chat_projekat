@@ -25,12 +25,7 @@ export class Chatroom{
     get username(){
         return this._username;
     }
-   clearChat(){
-       db.collection(chats).doc()
-       .delete()
-       .then()
-       .catch();
-   }
+
     updateUsername(x){
         this.username = x;
         localStorage.setItem("username", x);

@@ -97,16 +97,3 @@ updateColor.addEventListener("click", () => {
 localStorage.setItem("backgroundColor", pickColor.value);
 body.style.backgroundColor = localStorage.backgroundColor;
 
-ulChatList.addEventListener("click", e => {
-    if(e.target.tagName == "i"){
-        if(localStorage.username){
-            confirm("Da li zelite da obrisete?");
-            chatUL1.clearChat();
-        }
-        else{
-            chatUL1.clear();
-            confirm("Da li zelite da obrisete?");
-           
-        }
-    }
-});
