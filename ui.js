@@ -45,7 +45,7 @@ export class ChatUI{
             <span>${docMsg.message}</span> 
             <br>
             <span> ${this.formatDate(date)} </span> 
-            <i class="fa fa-trash" id="ja"></i>    
+            <i class="fa fa-trash" id="me"></i>    
             </li> `;
         }
         else{
@@ -55,12 +55,18 @@ export class ChatUI{
             <span>${docMsg.message}</span> 
             <br>
             <span> ${this.formatDate(date)} </span> 
-            <i class="fa fa-trash"></i>            
+            <i class="fa fa-trash" id="others"></i>            
             </li> `;
         }
         
         this.list.innerHTML += addLi;
         this.list.scrollTop = this.list.scrollHeight;
+
+     this.list.addEventListener("click", e => {
+        if(e.target.id == "others"){
+           
+        }
+     });
     }
 }
 
