@@ -14,8 +14,6 @@ let pickColor = document.querySelector("#pickColor");
 let updateColor = document.querySelector("#updateColor");
 
 
-
-
 let username =() => {
     if(localStorage.username){
         return localStorage.username;
@@ -92,8 +90,7 @@ updateColor.addEventListener("click", () => {
         let color = pickColor.value;
         body.style.backgroundColor = color;
     }, 500);
-    
-});
-localStorage.setItem("backgroundColor", pickColor.value);
-body.style.backgroundColor = localStorage.backgroundColor;
 
+    localStorage.setItem("backgroundColor", pickColor.value);
+});
+body.style.backgroundColor = localStorage.backgroundColor;

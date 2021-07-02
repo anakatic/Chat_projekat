@@ -36,37 +36,53 @@ export class ChatUI{
        
     }
     templateLI(docMsg){
+        this.list.innerHTML == "";
         let date = docMsg.created_at.toDate();
-        let addLi 
+        let li = document.createElement("li");
+        let trashB = document.createElement("div");
+        let trash = document.createElement("img");
         if(localStorage.username == docMsg.username || docMsg.username == "Ana"){
-            addLi = 
-            `<li class="right"> 
-            <span>${docMsg.username} : </span> 
-            <span>${docMsg.message}</span> 
-            <br>
-            <span> ${this.formatDate(date)} </span> 
-            <i class="fa fa-trash" id="me"></i>    
-            </li> `;
+            li.classList.add("right");
+            trash.classList.add("me");
         }
         else{
-            addLi =
-            `<li class="standard"> 
-            <span>${docMsg.username} : </span> 
-            <span>${docMsg.message}</span> 
-            <br>
-            <span> ${this.formatDate(date)} </span> 
-            <i class="fa fa-trash" id="others"></i>            
-            </li> `;
+            li.classList.add("standard");
+            trash.classList.add("others");
         }
-        
-        this.list.innerHTML += addLi;
+
+        let msg = document.createElement("p");
+        msg.innerHTML =  `<b>${docMsg.username}: </b>${docMsg.message} <br>  ${this.formatDate(date)}`;
+        trash.setAttribute("src", "trash-alt-solid.svg")
+        trashB.appendChild(trash);
+        trashB.classList.add("trash");
+        li.appendChild(trashB);
+        li.appendChild(msg);
+        this.list.appendChild(li);
         this.list.scrollTop = this.list.scrollHeight;
 
-     this.list.addEventListener("click", e => {
-        if(e.target.id == "others"){
-           
-        }
-     });
+
+        trashB.addEventListener("click", (e) => {
+            let msg = e.target.parentElement.parentElement;
+            if(e.target.classList == "me") {
+                if (confirm("Do you really want to delete the message?")) {
+                    this.list.removeChild(msg);
+                    db.collection("chats")
+                    .where("username", "==", docMsg.username)
+                    .where("message", "==", docMsg.message)
+                    .where("created_at", "==", docMsg.created_at)
+                    .get()
+                    .then(querrySnapshot => {
+                        querrySnapshot.forEach(data => {
+                            db.collection("chats").doc(`${data.id}`).delete()
+                        })
+                    })
+                    .catch(err => console.log(err));                 
+                }
+            }
+            else {
+                this.list.removeChild(msg);
+            }
+        });
     }
 }
 
